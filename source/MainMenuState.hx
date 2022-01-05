@@ -232,6 +232,10 @@ class MainMenuState extends MusicBeatState
 									case 'story_mode':
 										//MusicBeatState.switchState(new StoryMenuState());
 										PlayState.SONG = Song.loadFromJson("chimp", "chimp");
+										PlayState.isStoryMode = true;
+										PlayState.campaignScore = 0;
+										PlayState.campaignMisses = 0;
+										PlayState.storyWeek = 1;
 										LoadingState.loadAndSwitchState(new PlayState(), true);
 									case 'freeplay':
 										MusicBeatState.switchState(new FreeplayState());
