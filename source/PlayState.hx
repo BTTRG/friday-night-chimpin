@@ -1946,9 +1946,9 @@ class PlayState extends MusicBeatState
 		randG = FlxG.random.int(0, 255);
 		randB = FlxG.random.int(0, 255);
 
-		if (FlxG.keys.justPressed.P) {
+		/*if (FlxG.keys.justPressed.P) {
 			health = 2;
-		}
+		}*/
 
 		super.update(elapsed);
 
