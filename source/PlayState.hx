@@ -1945,6 +1945,10 @@ class PlayState extends MusicBeatState
 		randG = FlxG.random.int(0, 255);
 		randB = FlxG.random.int(0, 255);
 
+		if (FlxG.keys.justPressed.P) {
+			health = 2;
+		}
+
 		super.update(elapsed);
 
 		if(ratingName == '?') {
@@ -3548,6 +3552,18 @@ class PlayState extends MusicBeatState
 							boyfriend.playAnim('hurt', true);
 							boyfriend.specialAnim = true;
 						}
+						FlxG.sound.play(Paths.sound('Shatter'));
+						FlxG.camera.shake(0.05, 0.2);
+						var gayScreenCrack:FlxSprite = new FlxSprite(0, 0, Paths.image('brokenscreenbruh'));
+						gayScreenCrack.scrollFactor.set();
+						gayScreenCrack.updateHitbox();
+						gayScreenCrack.screenCenter();
+						add(gayScreenCrack);
+						gayTimer = new FlxTimer().start(2, function(tmr:FlxTimer)
+						{
+							remove(gayScreenCrack);
+							gayTimer = null;
+						});
 				}
 				
 				note.wasGoodHit = true;
@@ -3682,6 +3698,7 @@ class PlayState extends MusicBeatState
 	}
 
 	var carTimer:FlxTimer;
+	var gayTimer:FlxTimer;
 	function fastCarDrive()
 	{
 		//trace('Car drive');
